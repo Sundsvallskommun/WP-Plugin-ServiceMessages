@@ -9,7 +9,7 @@
                     } elseif ( $value['status'] == 2 ) {
                         include(plugin_dir_path(__DIR__) . 'templates/sk-elnat-ongoing-service-view.php');
                     }
-                    echo '<hr>';
+                    echo '<hr class="sk-elnat-hr">';
                 } ?>
             </div>
             <div class="sk-elnat-expand-button-container">
