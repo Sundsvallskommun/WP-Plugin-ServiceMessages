@@ -1,0 +1,43 @@
+{
+    "key": "group_5b4dc86db0d1b",
+    "title": "Inställningar",
+    "fields": [
+        {
+            "key": "field_5b4dc8890f033",
+            "label": "Sökväg",
+            "name": "sk_elnat_service_messages_sokvag",
+            "type": "text",
+            "instructions": "Fyll i sökvägen till den JSON-fil som innehåller service information",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-service-meddelanden"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1531828664
+}

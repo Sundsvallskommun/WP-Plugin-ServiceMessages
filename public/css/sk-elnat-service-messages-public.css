@@ -1,0 +1,70 @@
+/**
+ * All of the CSS for your public-facing functionality should be
+ * included in this file.
+ */
+
+.sk-elnat-service-messages {
+    display: none;
+}
+
+.sk-elnat-alert {
+    position: relative;
+}
+
+.sk-elnat-center {
+    background: linear-gradient(rgba(255, 0, 0, 0), #ffede0);
+    width: 100%;
+    height: 60px;
+    position: absolute;
+    left: 0;
+    bottom: 9px;
+    text-align: center;
+    /*border: 1px solid red;*/
+}
+
+.sk-elnat-expandeble {
+    overflow: hidden;
+    height: 8.5em;
+}
+
+.sk-elnat-expand-button {
+    padding-top: 30px;
+    cursor: pointer;
+    font-size: 24px !important;
+}
+
+.icon-container {
+    min-height: 40px;
+}
+
+.icon-div {
+    padding-top: 13px;
+    height: 100%;
+    width: 50px;
+    float:left; /* add this */
+    /*border: 1px solid red;*/
+}
+
+.info-div{
+
+    height: 100%;
+    width: calc(100% - 50px);
+    /*border: 1px solid green;*/
+    overflow: hidden; /* if you don't want #second to wrap below #first */
+}
+
+.icon-48 {
+    font-size: 32px !important;
+}
+
+.info-text {
+    display: block;
+    margin-top: -5px;
+}
+
+@media (max-width: 768px) { 
+    .sk-elnat-expand-button {
+        padding-top: 15px;
+        font-size: 48px !important;
+    }
+}
