@@ -55,7 +55,8 @@ class Sk_Elnat_Service_Messages_Admin {
 	}
 
 	/**
-	 * Adding settings page for ACF for color and font settings
+	 * Adding optiones page for Sundsvall Elnät Service Messages ( this plugin ) called
+	 * 'Service Meddelanden'
 	 *
 	 * @author Joakim Sundqvist <joakim.sundqvist@cybercom.com>
 	 *

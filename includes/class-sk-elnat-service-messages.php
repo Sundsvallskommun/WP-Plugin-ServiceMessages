@@ -170,7 +170,7 @@ class Sk_Elnat_Service_Messages {
 	private function define_public_hooks() {
 
 		$plugin_public = new Sk_Elnat_Service_Messages_Public( $this->get_plugin_name(), $this->get_version() );
-
+		
 		$this->loader->add_action( 'init', $plugin_public, 'add_shortcode' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );

@@ -5,7 +5,7 @@
 	$( window ).load(function() {
 		//Init important variables
 		$('.sk-elnat-service-messages').show();
-		var service_messages_original_height = $('.sk-elnat-expandeble').height();
+		var service_messages_original_height = $('.sk-elnat-expandeble-area').height();
 
 		//Set on click listener for expanding and contracting service messages
 		$('.sk-elnat-expand-button').click(function() {
@@ -15,7 +15,7 @@
 
 	//Expand or contract the service messages <div>
 	function expand_service_messagess(expand_time, original_height) {
-		var expandeble_box = $('.sk-elnat-expandeble');
+		var expandeble_box = $('.sk-elnat-expandeble-area');
 
 		//Expand
 		if(expandeble_box.height() === original_height){

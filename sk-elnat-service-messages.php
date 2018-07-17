@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Sundsvall Elnat Service Messages
  * Plugin URI:        https://www.cybercom.com/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       This plugin adds the feature to show service messages that are synced with a json-file. This plugin is a secific plugin for Sundsvall Elnät's webpage.
  * Version:           1.0.0
  * Author:            Joakim Sundqvist
  * Author URI:        https://www.cybercom.com/
