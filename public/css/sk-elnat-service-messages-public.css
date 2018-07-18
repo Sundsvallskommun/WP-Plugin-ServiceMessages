@@ -12,28 +12,29 @@
 }
 
 .sk-elnat-service-message-container {
-    min-height: 46px;
+    min-height: 2.8em;
 }
 
 .sk-elnat-icon-container {
-    padding-top: 13px;
+    padding-top: 0.8em;
     height: 100%;
-    width: 50px;
+    width: 3.1em;
     float:left;
 }
 
 .sk-elnat-icon-32 {
-    font-size: 32px !important;
+    /* 2em equals 32px */
+    font-size: 2em !important;
 }
 
 .sk-elnat-info-container {
-    width: calc(100% - 50px);
+    width: calc(100% - 3.1em);
     overflow: hidden;
 }
 
 .sk-elnat-info-text {
     display: block;
-    line-height: 18px;
+    line-height: 1.2em;
 }
 
 .sk-elnat-expandeble-area {
@@ -44,24 +45,24 @@
 .sk-elnat-expand-button-container {
     background: linear-gradient(rgba(255, 0, 0, 0), #ffede0);
     width: 100%;
-    height: 60px;
+    height: 3.75em; /*Equals to 60px witch is the unit used in the JQuery scripts for expanding*/
     position: absolute;
     left: 0;
-    bottom: 9px;
+    bottom: 0.6em;
     text-align: center;
 }
 
 .sk-elnat-expand-button {
-    text-shadow: 0px 0px 4px #ffede0; /*Creates better contrast*/
-    padding-top: 40px;
+    text-shadow: 0 0 0.25em #ffede0; /*Creates better contrast*/
+    padding-top: 1.15em;
     cursor: pointer;
-    font-size: 24px !important;
+    font-size: 2em !important;
 }
 
 @media (max-width: 768px) { 
     .sk-elnat-expand-button {
-        padding-top: 25px;
-        font-size: 48px !important;
+        padding-top: 0.5em;
+        font-size: 3em !important;
     }
 }
 

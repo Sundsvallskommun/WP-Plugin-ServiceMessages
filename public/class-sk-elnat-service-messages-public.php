@@ -20,6 +20,12 @@
  * @subpackage Sk_Elnat_Service_Messages/public
  * @author     Joakim Sundqvist <joakim.sundqvist@cybercom.com>
  */
+
+/**
+ * External classes to include.
+ */ 
+require_once( plugin_dir_path(__DIR__) . 'public/classes/service-messages.class.php' );
+
 class Sk_Elnat_Service_Messages_Public {
 
 	/**
@@ -55,16 +61,6 @@ class Sk_Elnat_Service_Messages_Public {
 	}
 
 	/**
-	 * Defines the short code so wordpress knows where the plugin should be displayed.
-	 *
-	 * @author Joakim Sundqvist <joakim.sundqvist@cybercom.com>
-	 * 
-	 */
-	public function add_shortcode() {
-		add_shortcode( 'sk-elnat-service-messages', array( $this, 'output' ) );
-	}
-
-	/**
 	 * Defines the service messages variable that contains information from the json-file
 	 * and then includes the file that is responsible for the front-end part of the plugin.
 	 *
@@ -72,47 +68,31 @@ class Sk_Elnat_Service_Messages_Public {
 	 * 
 	 */
 	public function output() {
-		$service_messages = $this->get_filtered_messages();
+		$service_messages = $this->get_service_messages();
 		include_once(plugin_dir_path(__DIR__) . 'templates/sk-elnat-service-messages-view.php');
 	}
 
 	/**
-	 * Filters the service messages so that the messages with status 3 is not included. This
-	 * creates cleaner html-code since it does not need to be handled there.
+	 * Creates service messages, removes status 3 and return the results
 	 *
 	 * @author Joakim Sundqvist <joakim.sundqvist@cybercom.com>
 	 * 
 	 */
-	public function get_filtered_messages() {
-		$return = array();
-		$json = $this->load_json_file(plugin_dir_path(__DIR__) . get_field( 'sk_elnat_service_messages_sokvag', 'option' ) ); //driftmeddelanden/driftmeddelandeelnat.json
-		
-		if ( $json ) {
-			$all_service_messages = $json['servicemessages'];
-			foreach($all_service_messages as $value) {
-				if ( $value['status'] != 3) {
-					array_push( $return, $value);
-				}
-			}
-		}
-
-		return $return;
+	public function get_service_messages() {
+		$file_path = plugin_dir_path(__DIR__) . get_field( 'sk_elnat_service_messages_sokvag', 'option' ); //driftmeddelanden/driftmeddelandeelnat.json
+		$service_messages = new Service_messages( $file_path );
+		$service_messages->remove_status( 3 );
+		return $service_messages->get_service_messages();
 	}
 
 	/**
-	 * Loads a json file and decodes it before returning object
+	 * Defines the short code so wordpress knows where the plugin should be displayed.
 	 *
 	 * @author Joakim Sundqvist <joakim.sundqvist@cybercom.com>
-	 * @param $file_path The path to the json-file
 	 * 
 	 */
-	public function load_json_file( $file_path ) {
-		$file = @file_get_contents( $file_path );
-		if ( $file ) {
-			return json_decode($file, true);
-		} else {
-			return null;
-		}
+	public function add_shortcode() {
+		add_shortcode( 'sk-elnat-service-messages', array( $this, 'output' ) );
 	}
 
 	/**
