@@ -19,7 +19,7 @@
     </div>
 <?php else: ?>
 <div class="alert alert-danger" role="alert">
-    JSON-fil ej hittat under "<?php echo get_field( 'sk_elnat_service_messages_sokvag', 'option' ); ?>"—Ändra inställningar under "Service Meddelanden"
+    JSON-fil ej hittat under <?php echo get_field( 'sk_elnat_service_messages_sokvag', 'option' ); ?>—Ändra inställningar under "Service Meddelanden"
 </div>
 <?php endif; ?>
 
