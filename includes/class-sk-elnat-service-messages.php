@@ -126,6 +126,22 @@ class Sk_Elnat_Service_Messages {
 
 	}
 
+
+	/**
+	 * Setting up acf-json sync for acf fields.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param $paths
+	 *
+	 * @return array
+	 */
+	public function acf_json( $paths ) {
+		$paths []= plugin_dir_path( __FILE__ ) . 'acf-json';
+		return $paths;
+	}
+
+
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
@@ -174,6 +190,7 @@ class Sk_Elnat_Service_Messages {
 		$this->loader->add_action( 'init', $plugin_public, 'add_shortcode' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_filter( 'acf/settings/load_json', $this, 'acf_json' );
 
 	}
 
