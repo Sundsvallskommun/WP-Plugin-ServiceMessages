@@ -79,7 +79,7 @@ class Sk_Elnat_Service_Messages_Public {
 	 * 
 	 */
 	public function get_service_messages() {
-		$file_path = plugin_dir_path(__DIR__) . get_field( 'sk_elnat_service_messages_sokvag', 'option' ); //driftmeddelanden/driftmeddelandeelnat.json
+		$file_path = get_field( 'sk_elnat_service_messages_sokvag', 'option' ); //driftmeddelanden/driftmeddelandeelnat.json
 		$service_messages = new Service_messages( $file_path );
 		$service_messages->remove_status( 3 );
 		return $service_messages->get_service_messages();
