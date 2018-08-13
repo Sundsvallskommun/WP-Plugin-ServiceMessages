@@ -12,6 +12,8 @@ class Service_messages {
 	 */
     public function __construct( $file_path ) {
         $file = @file_get_contents( $file_path );
+	    $file = utf8_encode( $file );
+
 		if ( $file ) {
             $json = json_decode( $file, true );
             $this->service_messages = $json['servicemessages'];
