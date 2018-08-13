@@ -62,11 +62,16 @@ class Sk_Elnat_Service_Messages_Admin {
 	 *
 	 */
 	public function add_options_page() {
-		if ( function_exists( 'acf_add_options_page' ) ) {
-			acf_add_options_page( array(
-				'page_title' => __( 'Service Meddelanden', 'sk_elnat_service_messages' )
-			) );
+		
+		if ( function_exists( 'acf_add_options_sub_page' ) ) {
+			// add sub page
+			acf_add_options_sub_page( array(
+				'page_title' 	=> 'Service Meddelanden',
+				'menu_title' 	=> 'Service Meddelanden',
+				'parent_slug' 	=> 'general-settings',
+			));
 		}
+
 	}
 
 	/**
