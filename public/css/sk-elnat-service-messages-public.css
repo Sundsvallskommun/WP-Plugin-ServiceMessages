@@ -12,11 +12,12 @@
 }
 
 .sk-elnat-service-message-container {
+    padding-top: 0.2em;
     min-height: 2.8em;
 }
 
 .sk-elnat-icon-container {
-    padding-top: 0.8em;
+    padding-top: 0.5em;
     height: 100%;
     width: 3.1em;
     float:left;
