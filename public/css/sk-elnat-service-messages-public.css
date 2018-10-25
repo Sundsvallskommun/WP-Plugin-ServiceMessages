@@ -7,12 +7,37 @@
     display: none;
 }
 
-.sk-elnat-alert {
-    position: relative;
+.no-transition {
+    -moz-transition: none !important;
+    -webkit-transition: none !important;
+    -o-transition: color 0 ease-in !important;
+    transition: none !important;
+}
+
+.sk-elnat-warning {
+    margin-bottom: 0 !important;
+    background-color: #ffdec7 !important;
+}
+
+.sk-elnat-warning:hover {
+    color: white;
+    background-color: #d44a00 !important;
+}
+
+.sk-elnat-success {
+    margin-top: 0.5rem;
+    margin-bottom: 0 !important;
+    background-color: #deebd1 !important;
+}
+
+.sk-elnat-success:hover {
+    color: white;
+    background-color: #00733b !important;
 }
 
 .sk-elnat-service-message-container {
     padding-top: 0.2em;
+    margin-bottom: 1rem;
     min-height: 2.8em;
 }
 
@@ -75,4 +100,18 @@
 
 .sk-elnat-hr {
     margin-bottom: 0.5rem !important;
+    margin-top: 0 !important;
+}
+
+.sk-elnat-toggle {
+    text-decoration: none !important;
+}
+
+.sk-elnat-toggle:hover {
+    text-decoration: none;
+}
+
+div.mdl-layout__drawer > nav.mdl-navigation > a.mdl-navigation__link {
+    display: inline-flex;
+    vertical-align: middle;
 }
