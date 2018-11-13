@@ -82,7 +82,7 @@ class Sk_Elnat_Service_Messages_Public {
 		$file_path = get_field( 'sk_elnat_service_messages_sokvag', 'option' ); //driftmeddelanden/driftmeddelandeelnat.json
 		$service_messages = new Service_messages( $file_path );
 		$service_messages->remove_status( 1 );
-		$service_messages->set_valid_class_id_numbers( array(1112, 1113, 1114, 1211, 1212, 1213, 1214, 1411, 3101, 3102, 3103, 3201, 3202, 3203, 3208, 3301) );
+		$service_messages->set_valid_class_id_numbers( array(1211, 1212, 1213, 1214, 1411, 3101, 3102, 3103, 3201, 3202, 3203, 3208, 3301) );
 		return $service_messages->get_service_messages();
 	}
 
