@@ -1,4 +1,10 @@
 <?php
+function cmp($a, $b)
+{
+    if($a['endtime'] == $b['endtime']){ return 0 ; }
+	return ($a['endtime'] > $b['endtime']) ? -1 : 1;
+}
+
 $planned_jobs_classid_numbers = array( 3101, 3102, 3103, 3201, 3202, 3203, 3208, 3301 );
 $current_jobs = array();
 $finnished_jobs = array();
