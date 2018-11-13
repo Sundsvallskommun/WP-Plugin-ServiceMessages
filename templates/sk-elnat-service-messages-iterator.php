@@ -27,25 +27,7 @@ foreach( $service_messages as $key => $value ) {
         array_push( $current_jobs, $value );
     }
 }
-?>
 
-
-<a class="sk-elnat-toggle" data-toggle="collapse" href="#collapseCurrent" role="button" aria-expanded="false" aria-controls="collapseCurrent">
-    <div class="sk-elnat-warning no-transition alert alert-warning" role="alert">
-        <p class="no-transition" style="vertical-align: middle; display: inline-flex; line-height: 33px;">
-            <i style="padding-right: 1rem;" class="sk-elnat-icon-32 material-icons">
-                error_outline
-            </i>
-            <b>Pågående avbrott (<?php echo count( $current_jobs )?>)</b>
-        </p>
-        <i style="float: right; color: inherit;" class="sk-elnat-icon-32 material-icons">keyboard_arrow_down</i>
-    </div>
-</a>
-
-<div class="collapse" id="collapseCurrent">
-    <div class="sk-elnat-alert no-transition alert alert-warning" role="alert">
-
-        <?php foreach( $current_jobs as $key => $value ): ?>
 //Sort $finnished_jobs (2D array) by date
 usort($finnished_jobs, function ($a, $b)
 {
@@ -54,68 +36,93 @@ usort($finnished_jobs, function ($a, $b)
 });
 ?>
 
-            <div class="sk-elnat-service-message-container">
-                <div class="sk-elnat-icon-container">
-                    <i class="sk-elnat-icon-32 material-icons">
-                        <?php echo ($value['plannedjob'] ? 'error' : 'warning'); ?>
+<div class="row">
+    <div class="col-lg-6 sk-elnat-col">
+        <a class="sk-elnat-toggle" data-toggle="collapse" href="#collapseCurrent" role="button" aria-expanded="false" aria-controls="collapseCurrent">
+            <div class="sk-elnat-warning no-transition alert alert-warning" role="alert">
+                <p class="no-transition" style="vertical-align: middle; display: inline-flex; line-height: 33px;">
+                    <i style="padding-right: .3rem;" class="sk-elnat-icon-32 material-icons">
+                        error_outline
                     </i>
-                </div>
-                <div class="<?php echo ( $value['outagedescr'] ? 'sk-elnat-info-container' :  'sk-elnat-info-container-no-message'); ?>">
-                    <b><?php echo $value['area'] ?></b>
-                    <small> 
-                        <?php echo ($value['plannedjob'] ? 'Planerat arbete har påbörjats' : 'Akut avbrott har uppstått'); ?>
-                    </small>
-                    <small class="sk-elnat-info-text"><?php if ( $value['outagedescr'] ) echo 'Meddelande: ' . $value['outagedescr']; ?></small>
-                </div>
+                    <b>Pågående strömavbrott (<?php echo count( $current_jobs )?>)</b>
+                </p>
+                <i style="float: right; color: inherit;" class="sk-elnat-icon-32 material-icons">keyboard_arrow_down</i>
             </div>
-            
-            <?php if( $key != count( $current_jobs ) - 1 ) :?>
-                <hr class="sk-elnat-hr">
-            <?php endif; ?>
-                    
-        <?php endforeach; ?>
+        </a>
 
+        <div class="collapse" id="collapseCurrent">
+            <div class="no-transition alert alert-warning" role="alert">
+
+                <?php foreach( $current_jobs as $key => $value ): ?>
+                    <?php if ( $value['area'] != "Icke definierad" ) echo '<b>' . $value['area'] . '</b>'; ?>
+                    <p data-id="<?php echo $value['id']; ?>" class="no-transition">
+                        <i class="material-icons" style="vertical-align: middle; margin-top: -3px; margin-right: .2rem;">
+                            <?php echo ($value['plannedjob'] ? 'error' : 'warning'); ?>
+                        </i>
+                        <?php if ( $value['area'] != "Icke definierad" ) : ?>
+                            <?php echo ($value['plannedjob'] ? 'Strömavbrott i samband med planerat arbete startade:<br>' : 'Strömavbrott startade:<br>') . date("Y-m-d H:i", strtotime($value['starttime'])); ?>
+                        <?php else : ?>
+                            Ett strömavbrott har uppstått. 
+                        <?php endif; ?>
+                    </p>
+
+                    <small>
+                        <?php 
+                            if ( $value['area'] == "Icke definierad" ) echo "Vi felsöker orsaken och vilket geografiskt område som är påverkat. ";
+                            if ( $value['statusinfo'] != 'Ej definerad' ) echo $value['statusinfo'] . ". ";
+                            if ( $value['statusinfo2'] != 'Meddelas senare' ) echo $value['statusinfo2'] . ". ";
+                            echo $value['outagedescr'] 
+                        ?>
+                    </small>
+
+                    <?php if ( $key < count($current_jobs)-1 ) : ?>
+                        <hr class="sk-elnat-hr">
+                    <?php endif; ?>
+                <?php endforeach; ?>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 sk-elnat-col">
+        <a class="sk-elnat-toggle" data-toggle="collapse" href="#collapseDone" role="button" aria-expanded="false" aria-controls="collapseDone">
+            <div class="sk-elnat-success no-transition alert alert-success" role="alert">
+                <p class="no-transition" style="vertical-align: middle; display: inline-flex; line-height: 33px;">
+                    <i style="padding-right: .3rem;" class="sk-elnat-icon-32 material-icons">
+                        check_circle_outline
+                    </i>
+                    <b>Nyligen åtgärdade strömavbrott</b>
+                </p>
+                <i style="float: right; color: inherit;" class="sk-elnat-icon-32 material-icons">keyboard_arrow_down</i>
+            </div> 
+        </a>
+
+        <div class="collapse" id="collapseDone">
+            <div class="sk-elnat-alert alert alert-success" role="alert">
+
+                <?php foreach( $finnished_jobs as $key => $value ): ?>
+                    <?php if ( $value['area'] != "Icke definierad" ) echo '<b>' . $value['area'] . '</b>'; ?>
+                    <p data-id="<?php echo $value['id']; ?>" class="no-transition">
+                        <i class="material-icons" style="vertical-align: middle; margin-top: -3px; margin-right: .2rem;">
+                            check_circle
+                        </i>
+                        <?php echo ($value['plannedjob'] ? 'Strömavbrott i samband med planerat arbete pågick:<br>' : 'Strömavbrott pågick:<br>') . date("Y-m-d H:i", strtotime($value['starttime'])) . ' - ' . date("Y-m-d H:i", strtotime($value['endtime'])); ?>
+                    </p>
+
+                    <small>
+                        <?php
+                            if ( $value['statusinfo'] != 'Ej definerad' ) echo $value['statusinfo'] . ". ";
+                            if ( $value['statusinfo2'] != 'Meddelas senare' ) echo $value['statusinfo2'] . ". ";
+                            echo $value['outagedescr'] 
+                        ?>  
+                    </small>
+
+                    <?php if ( $key < count($finnished_jobs)-1 ) : ?>
+                        <hr class="sk-elnat-hr">
+                    <?php endif; ?>        
+                <?php endforeach; ?>
+
+            </div>
+        </div>
     </div>
 </div>
 
-
-<a class="sk-elnat-toggle" data-toggle="collapse" href="#collapseDone" role="button" aria-expanded="false" aria-controls="collapseDone">
-    <div class="sk-elnat-success no-transition alert alert-success" role="alert">
-        <p class="no-transition" style="vertical-align: middle; display: inline-flex; line-height: 33px;">
-            <i style="padding-right: 1rem;" class="sk-elnat-icon-32 material-icons">
-                check_circle_outline
-            </i>
-            <b>Nyligen åtgärdade avbrott</b>
-        </p>
-        <i style="float: right; color: inherit;" class="sk-elnat-icon-32 material-icons">keyboard_arrow_down</i>
-    </div> 
-</a>
-
-    <div class="collapse" id="collapseDone">
-        <div class="sk-elnat-alert alert alert-success" role="alert">
-
-        <?php foreach( $finnished_jobs as $key => $value ): ?>
-
-                <div class="sk-elnat-service-message-container">
-                    <div class="sk-elnat-icon-container">
-                        <i class="sk-elnat-icon-32 material-icons">
-                        check_circle
-                        </i>
-                    </div>
-                    <div class="<?php echo ( $value['outagedescr'] ? 'sk-elnat-info-container' :  'sk-elnat-info-container-no-message'); ?>">
-                        <b><?php if ($value['area'] != "Icke definierad") echo $value['area']; ?></b>
-                        <small> 
-                            <?php echo ($value['plannedjob'] ? 'Planerat arbete har åtgärdats ' : 'Akut avbrott har åtgärdats ') . $value['endtime']; ?>
-                        </small>
-                        <small class="sk-elnat-info-text"><?php if ( $value['outagedescr'] ) echo 'Meddelande: ' . $value['outagedescr']; ?></small>
-                    </div>
-                </div>
-
-                <?php if( $key != count( $finnished_jobs ) - 1 ) :?>
-                    <hr class="sk-elnat-hr">
-                <?php endif; ?>
-                        
-            <?php endforeach; ?>
-
-        </div>
-    </div>
