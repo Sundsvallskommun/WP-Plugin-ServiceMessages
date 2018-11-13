@@ -3,6 +3,10 @@
  * included in this file.
  */
 
+.sk-elnat-col {
+    padding-bottom: 0.5em !important; 
+}
+
 .sk-elnat-service-messages {
     display: none;
 }
@@ -12,6 +16,10 @@
     -webkit-transition: none !important;
     -o-transition: color 0 ease-in !important;
     transition: none !important;
+}
+
+.sk-elnat-alert {
+    margin-bottom: 0rem !important;
 }
 
 .sk-elnat-warning {
@@ -25,7 +33,6 @@
 }
 
 .sk-elnat-success {
-    margin-top: 0.5rem;
     margin-bottom: 0 !important;
     background-color: #deebd1 !important;
 }
@@ -100,7 +107,7 @@
 
 .sk-elnat-hr {
     margin-bottom: 0.5rem !important;
-    margin-top: 0 !important;
+    margin-top: 0.3rem !important;
 }
 
 .sk-elnat-toggle {
