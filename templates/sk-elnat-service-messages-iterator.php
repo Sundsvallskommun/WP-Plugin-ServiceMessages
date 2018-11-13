@@ -40,6 +40,13 @@ foreach( $service_messages as $key => $value ) {
     <div class="sk-elnat-alert no-transition alert alert-warning" role="alert">
 
         <?php foreach( $current_jobs as $key => $value ): ?>
+//Sort $finnished_jobs (2D array) by date
+usort($finnished_jobs, function ($a, $b)
+{
+    if($a['endtime'] == $b['endtime']){ return 0 ; }
+	return ($a['endtime'] > $b['endtime']) ? -1 : 1;
+});
+?>
 
             <div class="sk-elnat-service-message-container">
                 <div class="sk-elnat-icon-container">
