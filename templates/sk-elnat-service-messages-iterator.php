@@ -95,7 +95,7 @@ $has_current_jobs = (sizeof($current_jobs) > 0);
                     <i style="padding-right: .3rem;" class="sk-elnat-icon-32 material-icons">
                         check_circle_outline
                     </i>
-                    <b><?php echo $has_current_jobs ? 'Nyligen åtgärdade strömavbrott' : 'Vi har för tillfället inga strömavbrott'; ?></b>
+                    <b><?php echo $has_current_jobs ? 'Nyligen åtgärdade strömavbrott' : 'Inga kända strömavbrott i vårt nät'; ?></b>
                 </p>
                 <i style="float: right; color: inherit;" class="sk-elnat-icon-32 material-icons">keyboard_arrow_down</i>
             </div> 
