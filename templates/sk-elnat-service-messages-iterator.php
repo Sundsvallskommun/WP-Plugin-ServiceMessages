@@ -75,7 +75,7 @@ $has_current_jobs = (sizeof($current_jobs) > 0);
                             if ( $value['area'] == "Icke definierad" ) echo "Vi felsöker orsaken och vilket geografiskt område som är påverkat. ";
                             if ( $value['statusinfo'] != 'Ej definerad' ) echo $value['statusinfo'] . ". ";
                             if ( $value['statusinfo2'] != 'Meddelas senare' ) echo $value['statusinfo2'] . ". ";
-                            echo $value['outagedescr'] 
+                            echo '<br>' . $value['outagedescr'] 
                         ?>
                     </small>
 
@@ -119,7 +119,7 @@ $has_current_jobs = (sizeof($current_jobs) > 0);
                         <?php
                             if ( $value['statusinfo'] != 'Ej definerad' ) echo $value['statusinfo'] . ". ";
                             if ( $value['statusinfo2'] != 'Meddelas senare' ) echo $value['statusinfo2'] . ". ";
-                            echo $value['outagedescr'] 
+                            echo '<br>' . $value['outagedescr']
                         ?>  
                     </small>
 
