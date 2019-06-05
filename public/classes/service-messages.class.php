@@ -1,7 +1,8 @@
 <?php
 
 class Service_messages {
-    private $service_messages;
+	private $service_messages;
+	private $modified_time;
 
     /**
 	 * Loads a json file, decodes it and finally it stores the service message
@@ -16,8 +17,13 @@ class Service_messages {
 
 		if ( $file ) {
             $json = json_decode( $file, true );
-            $this->service_messages = $json['servicemessages'];
+			$this->service_messages = $json['servicemessages'];
+			$this->modified_time = $json['modifiedtime'];
 		}
+	}
+
+	public function get_modified_date() {
+		return $this->modified_time;
 	}
 	
 	/**

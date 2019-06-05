@@ -25,8 +25,10 @@
  * External classes to include.
  */ 
 require_once( plugin_dir_path(__DIR__) . 'public/classes/service-messages.class.php' );
+require_once( plugin_dir_path(__DIR__) . 'public/classes/service-messages-feed.class.php' );
 
 class Sk_Elnat_Service_Messages_Public {
+
 
 	/**
 	 * The ID of this plugin.
@@ -54,10 +56,10 @@ class Sk_Elnat_Service_Messages_Public {
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
-
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		$this->get_service_messages();
 	}
 
 	/**
@@ -83,7 +85,13 @@ class Sk_Elnat_Service_Messages_Public {
 		$service_messages = new Service_messages( $file_path );
 		$service_messages->remove_status( 1 );
 		$service_messages->set_valid_class_id_numbers( array(1211, 1212, 1213, 1214, 1411, 3101, 3102, 3103, 3201, 3202, 3203, 3208, 3301) );
-		return $service_messages->get_service_messages();
+		$filtered_service_messages = $service_messages->get_service_messages();
+		$last_modified = $service_messages->get_modified_date();
+
+		//Create RSS feed with message data
+		new Service_Messages_Feed( $filtered_service_messages, $last_modified );
+		
+		return $filtered_service_messages;
 	}
 
 	/**
