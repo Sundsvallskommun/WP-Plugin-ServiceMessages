@@ -12,6 +12,11 @@ class Service_messages {
 	 * 
 	 */
     public function __construct( $file_path ) {
+		if( !file_exists ($file_path) ){
+			error_log( 'sk-elnat-service-messages: Json file including service messages not exists.' );
+			return false;
+		}
+
         $file = file_get_contents( $file_path );
 		$file = utf8_encode( $file );
 
