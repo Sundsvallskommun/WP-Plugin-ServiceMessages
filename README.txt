@@ -17,12 +17,8 @@ This plugin adds the feature to show service messages that are synced with a jso
 
 This section describes how to install the plugin and get it working.
 
-1. Upload `sk-elnat-service-messages.php` to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Add shortcode [sk-elnat-service-messages] where you want the plugin to be displayed
-4. Go to 'Service Meddelanden' options page on admin and fill in the path to the json-file5. Done!
-
-== Changelog ==
-
-= 1.0 =
-* This is the inital version
+1. Create a folder and name it to 'sk-elnat-service-messages' in the wordpress plugins directory.
+2. Upload the files into the directory created in step 1.
+3. Activate the plugin through the 'Plugins' menu in WordPress
+4. Add shortcode [sk-elnat-service-messages] where you want the plugin to be displayed
+5. Go to 'Service Meddelanden' options page on admin and fill in the path to the json-file5. Done!
